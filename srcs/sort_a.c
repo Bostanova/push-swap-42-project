@@ -44,12 +44,12 @@ int	        sort_a(t_stack *a, t_stack *b)
 		{
 			if (b->top > 0 && b->list->content < b->tail)
 			{
-				rotate_both(a, b);
+				rev_rotate_both(a, b);
 				return (1);
 			}
 			else
 			{
-				rotate_a(a);
+				rev_rotate_a(a);
 				return (1);
 			}
 		}
