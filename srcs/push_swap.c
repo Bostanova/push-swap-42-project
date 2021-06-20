@@ -29,8 +29,6 @@ int	main(int argc, char **argv)
 	b->tail = INT32_MAX;
 	if (sorted(a))
 		sort_stack(a, b);
-	else
-		ft_putstr("The stack is already sorted\n");
 	list_clear(a->list);
 	free((void *)a);
 	list_clear(b->list);

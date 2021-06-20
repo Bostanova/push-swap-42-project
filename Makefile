@@ -3,7 +3,8 @@ LIB			=libft.a
 
 NAME		=push_swap
 SRC			=srcs/push_swap.c srcs/push.c srcs/reverse_rotate.c \
-				srcs/rotate.c srcs/swap.c srcs/init.c srcs/sort.c
+				srcs/rotate.c srcs/swap.c srcs/init.c srcs/sort.c \
+				srcs/sort_a.c
 OBJ			=$(SRC:.c=.o)
 
 FLAGS		= -Wall -Wextra -Werror

@@ -4,7 +4,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdint.h>
-# include <stdio.h> //don't forget to remove
 # include "../libft/libft.h"
 
 typedef struct s_stack
@@ -28,5 +27,6 @@ void	rev_rotate_b(t_stack *tack);
 void	rev_rotate_both(t_stack *stack1, t_stack *tack2);
 void	sort_stack(t_stack *a, t_stack *b);
 int		sorted(t_stack *stack);
+int		sort_a(t_stack *a, t_stack *b);
 
 #endif

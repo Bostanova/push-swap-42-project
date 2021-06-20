@@ -32,7 +32,7 @@ static void	check_dublicate(int *array, int len)
 		{
 			if (array[i] == array[j])
 			{
-				ft_putstr("Error! Please, enter numbers without dublicate\n");
+				ft_putstr("Error\n");
 				exit(1);
 			}
 			j++;
@@ -74,7 +74,7 @@ void	create_stack(t_stack *stack, char **argv, int len)
 			array[i] = ft_atoi(argv[i + 1]);
 		else
 		{
-			ft_putstr("Error! Please, enter only numbers\n");
+			ft_putstr("Error\n");
 			exit(1);
 		}
 		i++;
