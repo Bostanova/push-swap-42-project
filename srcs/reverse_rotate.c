@@ -4,9 +4,7 @@ static t_stack	*rev_rotate(t_stack *stack)
 {
 	t_list	*tmp;
 	t_list	*prev;
-	
-	if (stack->top < 1)
-		return (stack);
+
 	prev = stack->list;
 	tmp = stack->list->next;
 	while (tmp->next != NULL)
@@ -16,8 +14,9 @@ static t_stack	*rev_rotate(t_stack *stack)
 	}
 	tmp->next = stack->list;
 	prev->next = NULL;
+	stack->tail = prev->content;
 	stack->list = tmp;
-	return(stack);
+	return (stack);
 }
 
 void	rev_rotate_a(t_stack *stack)
@@ -40,7 +39,7 @@ void	rev_rotate_b(t_stack *stack)
 
 void	rev_rotate_both(t_stack *stack1, t_stack *stack2)
 {
-	if (stack1->top > 0 && stack2 > 0)
+	if (stack1->top > 0 && stack2->top > 0)
 	{
 		stack1 = rev_rotate(stack1);
 		stack2 = rev_rotate(stack2);

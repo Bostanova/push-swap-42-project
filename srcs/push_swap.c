@@ -1,10 +1,10 @@
 #include "../includes/push_swap.h"
 #include "../libft/libft.h"
 
-void list_clear(t_list *head)
+void	list_clear(t_list *head)
 {
-	t_list *tmp;
-	
+	t_list	*tmp;
+
 	tmp = head;
 	while (tmp != NULL)
 	{
@@ -17,7 +17,7 @@ void list_clear(t_list *head)
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
-	t_stack *b;
+	t_stack	*b;
 
 	if (argc < 2)
 		return (0);
@@ -26,33 +26,14 @@ int	main(int argc, char **argv)
 	b = (t_stack *)malloc(sizeof(t_stack));
 	b->list = NULL;
 	b->top = -1;
+	b->tail = INT32_MAX;
 	if (sorted(a))
-		sort_stack(a, b, (argc - 1));
+		sort_stack(a, b);
 	else
 		ft_putstr("The stack is already sorted\n");
-		
-	// print list     //remove later
-	// t_stack *tmp = a;
-	// while (tmp->list != NULL)
-	// {
-	// 	printf("%d ", tmp->list->content);
-	// 	tmp->list = tmp->list->next;
-	// }
-	// printf("\ntop_a = %d\n", tmp->top);
-	// t_stack *tmp2 = b;
-	// while (tmp2->list != NULL)
-	// {
-	// 	printf("%d ", tmp2->list->content);
-	// 	tmp2->list = tmp2->list->next;
-	// }
-	// printf("\ntop_b = %d\n", tmp2->top);
-
-	//free memory
 	list_clear(a->list);
 	free((void *)a);
 	list_clear(b->list);
 	free((void *)b);
-
-	// return (0);
-	// sleep(1000);
+	return (0);
 }

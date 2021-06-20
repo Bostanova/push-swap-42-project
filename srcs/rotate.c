@@ -4,7 +4,7 @@ static t_stack	*rotate(t_stack *stack)
 {
 	t_list	*tmp;
 	t_list	*head;
-	
+
 	head = stack->list;
 	tmp = stack->list;
 	stack->list = stack->list->next;
@@ -12,7 +12,8 @@ static t_stack	*rotate(t_stack *stack)
 		tmp = tmp->next;
 	tmp->next = head;
 	head->next = NULL;
-	return(stack);
+	stack->tail = head->content;
+	return (stack);
 }
 
 void	rotate_a(t_stack *stack)

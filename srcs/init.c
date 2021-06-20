@@ -27,7 +27,7 @@ static void	check_dublicate(int *array, int len)
 	i = 0;
 	while (i < len)
 	{
-		j = 0;	
+		j = 0;
 		while (j < i)
 		{
 			if (array[i] == array[j])
@@ -48,11 +48,13 @@ static void	init_stack(t_stack *stack, int *array, int len)
 
 	stack->list = ft_lstnew(array[0]);
 	stack->top = 0;
+	stack->tail = stack->list->content;
 	i = 1;
 	while (i < len)
 	{
 		new_node = ft_lstnew(array[i]);
 		ft_lstadd_back(&stack->list, new_node);
+		stack->tail = new_node->content;
 		stack->top += 1;
 		i += 1;
 	}

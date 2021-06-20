@@ -3,12 +3,14 @@
 static t_stack	*swap(t_stack *stack)
 {
 	t_list	*tmp;
-	
+
 	tmp = stack->list->next;
 	stack->list->next = tmp->next;
 	tmp->next = stack->list;
 	stack->list = tmp;
-	return(stack);
+	if (stack->top == 1)
+		stack->tail = tmp->next->content;
+	return (stack);
 }
 
 void	swap_a(t_stack *stack)
