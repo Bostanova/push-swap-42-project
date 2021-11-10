@@ -6,7 +6,7 @@
 **	’del’ given as a parameter and free the element.
 **	The memory of ’next’ must not be freed.
 */
-void	ft_lstdelone(t_list *lst, void (*del)(int))
+void	ft_lstdelone(t_lst *lst, void (*del)(void*))
 {
 	if (!lst || !del)
 		return ;

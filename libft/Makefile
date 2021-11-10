@@ -12,21 +12,21 @@ SRC 		=	ft_isdigit.c ft_islower.c ft_isupper.c ft_isalpha.c \
 				ft_strcpy.c ft_strjoin.c ft_substr.c ft_strdup.c \
 				ft_putchar.c ft_putendl.c ft_putstr.c ft_putnbr.c \
 				ft_putchar_fd.c ft_putstr_fd.c ft_putnbr_fd.c ft_putendl_fd.c\
-				ft_strlen.c ft_bzero.c \
+				ft_strlen.c ft_bzero.c ft_error.c ft_intcpy.c\
 				ft_memset.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
-				ft_memchr.c ft_memcmp.c \
-				ft_calloc.c ft_realloc.c\
-				ft_itoa.c ft_atoi.c
+				ft_memchr.c ft_memcmp.c ft_split.c\
+				ft_calloc.c ft_realloc.c ft_strdel.c ft_strsub.c\
+				ft_itoa.c ft_atoi.c get_next_line.c
 		
 OBJ 		= $(SRC:.c=.o)
 
 BONUS		=	ft_lstnew.c ft_lstsize.c ft_lstlast.c \
 				ft_lstadd_front.c ft_lstadd_back.c ft_lstdelone.c \
-				ft_lstclear.c ft_lstiter.c
+				ft_lstclear.c ft_lstiter.c  
 
 BONUS_OBJ	= $(BONUS:.c=.o)
 
-all: $(NAME) bonus
+all: $(NAME)
 
 $(NAME):$(SRC) $(OBJ) $(INCLUDE)
 			ar rc $(NAME) $(OBJ)

@@ -2,11 +2,11 @@
 
 /*   Create a new node of linked list      */
 
-t_list	*ft_lstnew(int	content)
+t_lst	*ft_lstnew(void *content)
 {
-	t_list	*new_node;
+	t_lst	*new_node;
 
-	new_node = (t_list *)malloc(sizeof(t_list));
+	new_node = (t_lst *)malloc(sizeof(t_lst));
 	if (!new_node)
 		return (NULL);
 	new_node->content = content;

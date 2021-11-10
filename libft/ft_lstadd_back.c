@@ -8,9 +8,9 @@
 			added to the list.
 */
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_lst **lst, t_lst *new)
 {
-	t_list	*tmp;
+	t_lst	*tmp;
 
 	if (lst)
 	{

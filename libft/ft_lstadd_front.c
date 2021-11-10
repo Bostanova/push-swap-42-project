@@ -8,7 +8,7 @@
 			added to the list.
 */
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_lst **lst, t_lst *new)
 {
 	if (lst)
 	{

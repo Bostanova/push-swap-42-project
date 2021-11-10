@@ -3,20 +3,17 @@
 /*  Converts the initial portion of the string pointed to by str 
 	to int representation                                         */
 
-static void	max_min_int(long long nbr)
+static void	check_max(ssize_t nbr)
 {
-	if (nbr > 2147483647)
-		ft_putstr("Error. Number bigger than MAX_INT\n");
-	else
-		ft_putstr("Error. Number less than MIN_INT\n");
-	exit(1);
+	if (nbr < -2147483648 || nbr > 2147483647)
+		ft_error();
 }
 
 int	ft_atoi(const char *str)
 {
-	int			i;
-	int			sign;
-	long long	res;
+	int		i;
+	int		sign;
+	ssize_t	res;
 
 	i = 0;
 	sign = 1;
@@ -35,7 +32,6 @@ int	ft_atoi(const char *str)
 		res += str[i] - '0';
 		i++;
 	}
-	if (res * sign > 2147483647 || res * sign < -2147483648)
-		max_min_int(res * sign);
+	check_max(res * sign);
 	return ((int)(res * sign));
 }

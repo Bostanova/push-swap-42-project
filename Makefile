@@ -1,33 +1,55 @@
-LIB_DIR		=libft/
-LIB			=libft.a
+PUSH_SWAP	= push_swap
+CHECKER		= checker
 
-NAME		=push_swap
-SRC			=srcs/push_swap.c srcs/push.c srcs/reverse_rotate.c \
-				srcs/rotate.c srcs/swap.c srcs/init.c srcs/sort.c \
-				srcs/sort_a.c
-OBJ			=$(SRC:.c=.o)
+CFLAGS 	= -Wall -Wextra -Werror
 
-FLAGS		= -Wall -Wextra -Werror
-HEADER		=includes/push_swap.h
+SRC1 	= 	push_swap.c check_args.c instr_rotate.c \
+			instr_swap_push.c instr_rev_rotate.c \
+			quick_sort.c fill_array.c initialization.c \
+			sort_small.c sort_common.c sort_common_utils.c
 
-%.o:				%.c $(HEADER)
-						@gcc $(FLAGS) -I$(LIB_DIR) -c $< -o $(<:.c=.o)
-all:				$(NAME) 
+SRC2 	= 	checker.c check_args.c instr_rotate.c \
+			instr_swap_push.c instr_rev_rotate.c \
+			quick_sort.c fill_array.c initialization.c
 
-$(NAME):			$(LIB_DIR)$(LIB) $(OBJ)
-						@gcc $(OBJ) -I$(LIB_DIR) -L$(LIB_DIR) -lft $(MLXFLAGS) -o $(NAME)
+OBJ 	= obj
+OBJ1 	= $(addprefix $(OBJ)/,$(SRC1:.c=.o))
+OBJ2 	= $(addprefix $(OBJ)/,$(SRC2:.c=.o))
 
-$(LIB_DIR)$(LIB):	$(LIB_DIR)
-						make -C $(LIB_DIR) all
+HDR 		= -I./includes
+LIBFT_HDR 	= -I./libft
+
+LIB_BIN	= -L./libft -lft
+LIBFT		= ./libft/libft.a
+
+all: $(LIBFT) ./libft/libft.a $(PUSH_SWAP) $(CHECKER)
+
+LIBFT		= ./libft/libft.a
+
+$(LIBFT):	
+			make -C ./libft
+
+$(OBJ):
+	mkdir $@
+
+$(OBJ)/%.o: %.c | $(OBJ)
+	gcc -g $(CFLAGS) $(HDR) $(LIBFT_HDR) -c $< -o $@
+
+$(PUSH_SWAP): $(OBJ1) $(LIBFT) ./includes/push_swap.h
+	gcc -g $(OBJ1) $(LIB_BIN) -o $@
+
+$(CHECKER): $(OBJ2) $(LIBFT) ./includes/push_swap.h
+	gcc -g $(OBJ2) $(LIB_BIN) -o $@
 
 clean:
-						rm -rf $(OBJ)
-						make -C $(LIB_DIR) clean
+	/bin/rm -f $(OBJS)
+	rm -rf $(OBJ)
+	make -C ./libft clean
 
-fclean:				clean 
-						rm -rf $(NAME)
-						make -C $(LIB_DIR) fclean
+fclean: clean
+	/bin/rm -f $(PUSH_SWAP)
+	/bin/rm -f $(CHECKER)
+	make -C ./libft fclean
 
-re:					fclean all
+re: fclean all
 
-.PHONY:				all clean fclean re

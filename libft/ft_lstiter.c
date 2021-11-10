@@ -5,7 +5,7 @@
 **	’f’ to the content of each element.
 */
 
-void	ft_lstiter(t_list *lst, void (*f)(int))
+void	ft_lstiter(t_lst *lst, void (*f)(void *))
 {
 	if (!lst || !f)
 		return ;

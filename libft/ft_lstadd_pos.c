@@ -8,9 +8,9 @@
 **			added to the list.
 */
 
-void	ft_lstadd_pos(t_list **lst, t_list *new, int pos)
+void	ft_lstadd_pos(t_lst **lst, t_lst *new, int pos)
 {
-	t_list	*tmp;
+	t_lst	*tmp;
 	int		i;
 
 	if (pos >= ft_lstsize(*lst))

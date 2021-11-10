@@ -6,10 +6,10 @@
 **	The pointer to the list must be set to NULL
 */
 
-void	ft_lstclear(t_list **lst, void (*del)(int))
+void	ft_lstclear(t_lst **lst, void (*del)(void*))
 {
-	t_list	*tmp;
-	t_list	*start;
+	t_lst	*tmp;
+	t_lst	*start;
 
 	if (!lst || !del)
 		return ;

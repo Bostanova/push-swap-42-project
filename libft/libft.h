@@ -1,14 +1,17 @@
 #ifndef LIBFT_H
 # define LIBFT_H
+# define MAXINT 2147483647
+# define MININT -2147483648
+# define BUFFER_SIZE 32
 
 # include <unistd.h>
 # include <stdlib.h>
 
-typedef struct s_list
+typedef struct s_lst
 {
-	int				content;
-	struct s_list	*next;
-}	t_list;
+	void			*content;
+	struct s_lst	*next;
+}	t_lst;
 
 void	ft_putchar(char c);
 void	ft_putendl(char *str);
@@ -29,6 +32,9 @@ int		ft_isspace(int c);
 int		ft_isprint(int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+int		ft_countword(char const *s);
+char	**ft_split(char const *s, int word);
+int		*ft_intcpy(int *dst, const int *src, int count);
 char	*ft_strcpy(char *dst, const char *src);
 size_t	ft_strlcpy(char *dst, char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, char *src, size_t dstsize);
@@ -44,6 +50,8 @@ char	*ft_strdup(const char *s1);
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_realloc(void *ptr, size_t size);
 void	ft_bzero(void *s, size_t n);
+void	ft_strdel(char **as);
+char	*ft_strsub(char const *s, unsigned int start, size_t len);
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
@@ -52,13 +60,15 @@ void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_itoa(int n);
 int		ft_atoi(const char *str);
-t_list	*ft_lstnew(int	content);
-int		ft_lstsize(t_list *lst);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstdelone(t_list *lst, void (*del)(int));
-void	ft_lstclear(t_list **lst, void (*del)(int));
-void	ft_lstiter(t_list *lst, void (*f)(int));
+t_lst	*ft_lstnew(void *content);
+int		ft_lstsize(t_lst *lst);
+t_lst	*ft_lstlast(t_lst *lst);
+void	ft_lstadd_front(t_lst **lst, t_lst *new);
+void	ft_lstadd_back(t_lst **lst, t_lst *new);
+void	ft_lstdelone(t_lst *lst, void (*del)(void*));
+void	ft_lstclear(t_lst **lst, void (*del)(void*));
+void	ft_lstiter(t_lst *lst, void (*f)(void *));
+int		get_next_line(int fd, char **line);
+void	ft_error(void);
 
 #endif
